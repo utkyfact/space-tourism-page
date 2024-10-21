@@ -431,6 +431,10 @@ nav {
 
 @media (min-width: 1440px) {
 
+    body {
+        height: 100dvh;
+    }
+
     #wrapper {
         padding-bottom: 2rem;
     }
