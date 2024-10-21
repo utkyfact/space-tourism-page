@@ -1,0 +1,789 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Bellefair&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(./assets/home/background-home-desktop.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, Bellefair, serif, Barlow Condensed, Barlow;
+}
+
+h2 span {
+    color: rgba(255, 255, 255, 0.711);
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+h2 {
+    font-size: 1.2rem;
+    font-family: var(--Bellefair-font);
+    font-weight: 100;
+}
+
+h1 {
+    font-family: var(--Bellefair-font);
+    font-weight: 100;
+}
+
+p {
+    font-family: "Barlow Condensed", sans-serif;
+}
+
+.d-none {
+    display: none;
+}
+
+.d-block {
+    display: block;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 0rem 2rem 2rem;
+}
+
+.logo {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 2rem;
+}
+
+.logo img {
+    width: 100%;
+}
+
+.line {
+    position: absolute;
+    border: 1px solid rgba(128, 128, 128, 0.208);
+    width: 60%;
+    left: -49%;
+    transform: translate(100%, 100%);
+    z-index: 2;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    padding: 1.5rem 6rem 0rem 4rem;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.066);
+    position: relative;
+    z-index: 99;
+    list-style-type: none;
+}
+
+.navbar span {
+    color: white;
+    font-size: 0.8rem;
+}
+
+.navbar li {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.8rem;
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    padding-bottom: 1.5rem;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-link.active {
+    border-bottom: 2px solid white;
+}
+
+#wrapper {
+    /* width: 80%; */
+    margin: auto;
+}
+
+/* Home section */
+
+.home-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7rem;
+}
+
+.main-left-side {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    color: white;
+    width: 50%;
+    text-align: start;
+    gap: 0.8rem;
+}
+
+.main-left-side p:first-child {
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    white-space: nowrap;
+    color: #D0D6F9;
+}
+
+.main-left-side p:last-child {
+    font-size: 0.8rem;
+    color: rgb(207, 213, 238);
+    line-height: 1.2rem;
+    width: 70%;
+}
+
+.main-left-side h1 {
+    font-size: 6rem;
+    text-transform: uppercase;
+}
+
+.main-right-side {
+    display: flex;
+    align-items: end;
+    width: 50%;
+    margin-right: 2rem;
+}
+
+.explore {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    color: black;
+    width: 3rem;
+    height: 3rem;
+    padding: 5rem;
+    border-radius: 100%;
+    margin-left: auto;
+}
+
+.explore:hover {
+    box-shadow: 0px 0px 25px white;
+    cursor: pointer;
+}
+
+/* Destination Section */
+
+.destination-container {
+    display: flex;
+    color: white;
+    padding: 4rem 6rem;
+    gap: 6rem;
+}
+
+.destination-title {
+    color: white;
+    text-transform: uppercase;
+    margin: 0rem 6rem;
+}
+
+.planet-img {
+    width: 50%;
+}
+
+.planet-img img {
+    width: 100%;
+}
+
+.destination-info {
+    width: 50%;
+}
+
+.destination-nav-link {
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+    margin-right: 0.8rem;
+    padding: 0.6rem 0rem;
+    border-bottom: 2px solid transparent;
+}
+
+.destination-nav-link.active {
+    border-bottom: 2px solid white;
+}
+
+.destination-info-title {
+    text-transform: uppercase;
+    font-size: 4rem;
+    padding: 2.5rem 0rem 1rem 0rem;
+}
+
+.destination-description {
+    color: rgba(234, 234, 234, 0.69);
+    font-size: 0.8rem;
+    line-height: 1.2rem;
+}
+
+.destination-line {
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.221);
+    padding: 1rem 0rem;
+}
+
+.destination-info-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.distance {
+    text-transform: uppercase;
+}
+
+.travel-time {
+    text-transform: uppercase;
+}
+
+.distance p:first-child,
+.travel-time p:first-child {
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.711);
+    margin-bottom: 0.3rem;
+}
+
+/* Crew Section */
+
+.crew-title {
+    color: white;
+    text-transform: uppercase;
+    margin-left: 2rem;
+}
+
+.crew-container {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem 2rem;
+    gap: 7rem;
+}
+
+.crew-info {
+    width: 50%;
+    padding: 2rem 0rem;
+}
+
+.crew-job {
+    text-transform: uppercase;
+}
+
+.crew-role {
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.711);
+}
+
+.crew-info-title {
+    text-transform: uppercase;
+    padding: 0.5rem 0rem 1rem 0rem;
+    font-size: 2.6rem;
+    white-space: nowrap;
+}
+
+.crew-description {
+    font-size: 0.8rem;
+    margin: 1rem 0rem;
+    line-height: 1.4rem;
+    color: rgba(255, 255, 255, 0.711);
+}
+
+.dots {
+    display: flex;
+    justify-content: start;
+    padding: 2rem 0rem;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgb(86, 86, 86);
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.dot.active {
+    background-color: white;
+    border: 2px solid black;
+}
+
+.crew-img {
+    width: 50%;
+    display: flex;
+    justify-content: end;
+}
+
+.crew-img img {
+    width: 100%;
+}
+
+/* Technology Section */
+
+.technology-title {
+    color: white;
+    text-transform: uppercase;
+    margin: 0rem 6rem;
+}
+
+.technology-container {
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem 0rem 0rem 5rem;
+    gap: 6rem;
+}
+
+.technology-info {
+    display: flex;
+    width: 50%;
+    gap: 2rem;
+}
+
+.change-technology span {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.change-technology span.active {
+    background-color: white;
+    color: black;
+}
+
+.technology-little-title {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #D0D6F9;
+}
+
+.technology-info-title {
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    white-space: nowrap;
+}
+
+.technology-description {
+    margin: 1rem 0rem;
+    line-height: 1.4rem;
+    font-size: 0.8rem;
+    color: #D0D6F9;
+}
+
+.change-technology {
+    display: flex;
+    flex-direction: column;
+}
+
+.technology-main {
+    margin-top: 0.4rem;
+}
+
+.technology-img {
+    width: 50%;
+    padding: 5rem 0rem;
+}
+
+.technology-img img {
+    width: 100%;
+}
+
+/* Hamburger Menü */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 5px 0;
+    transition: 0.4s;
+}
+
+@media (min-width: 1440px) {
+
+    #wrapper {
+        padding-bottom: 2rem;
+    }
+
+    .line {
+        top: 7.2%;
+    }
+
+    .home-main {
+        padding: 10rem;
+    }
+
+    .main-left-side p:first-child {
+        font-size: 2rem;
+    }
+
+    .main-left-side h1 {
+        font-size: 11rem;
+    }
+
+    .main-left-side p:last-child {
+        font-size: 1.5rem;
+    }
+
+    .explore {
+        font-size: 2rem;
+        width: 8rem;
+        height: 8rem;
+        padding: 12rem;
+    }
+}
+
+
+@media (max-width: 768px) {
+    body {
+        background-image: url(./assets/home/background-home-tablet.jpg);
+        height: 100%;
+    }
+
+    #wrapper {
+        width: 100%;
+    }
+
+    nav {
+        padding: 0rem 0rem 0rem 2rem;
+    }
+
+    .navbar {
+        padding: 3rem 3rem 0rem 3rem;
+        backdrop-filter: none;
+        background-color: rgb(19, 21, 34);
+    }
+
+    .nav-link {
+        padding-bottom: 3rem;
+    }
+
+    .navbar span {
+        display: none;
+    }
+
+    .line {
+        display: none;
+    }
+
+    .home-main {
+        flex-direction: column;
+    }
+
+    .main-left-side {
+        align-items: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .main-left-side h1 {
+        font-size: 7rem;
+    }
+
+    .main-left-side p:last-child {
+        font-size: 1rem;
+        line-height: 1.8rem;
+        width: 80%;
+    }
+
+    .main-right-side {
+        width: 100%;
+        align-items: center;
+        margin-right: 0rem;
+        padding: 4rem 0rem;
+    }
+
+    .explore {
+        margin: auto;
+    }
+
+    /* Destination Section */
+    .destination-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 4rem 4rem;
+    }
+
+    .destination-title {
+        font-size: 1.2rem;
+        padding: 2rem 0rem;
+        margin: 0;
+        text-align: center;
+    }
+
+    .destination-info {
+        width: 100%;
+        text-align: center;
+    }
+
+    .destination-nav {
+        white-space: nowrap;
+    }
+
+    /* Crew Section */
+    .crew-title {
+        font-size: 1.2rem;
+        padding: 2rem 0rem;
+        text-align: center;
+        margin: 0;
+    }
+
+    .crew-container {
+        flex-direction: column-reverse;
+        padding: 2rem 2rem;
+        gap: 1rem;
+    }
+
+    .crew-info {
+        text-align: center;
+        width: 100%;
+    }
+
+    .crew-role {
+        font-size: 0.9rem;
+    }
+
+    .crew-info-title {
+        font-size: 2rem;
+        white-space: wrap;
+    }
+
+    .crew-description {
+        font-size: 0.7rem;
+    }
+
+    .dots {
+        justify-content: center;
+    }
+
+    .crew-img {
+        margin-left: 2rem;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+    }
+
+    /* Technology Section */
+
+    .technology-container {
+        flex-direction: column-reverse;
+        padding: 0rem 4rem;
+        gap: 0;
+    }
+
+    .technology-title {
+        text-align: center;
+        padding: 2rem 0rem;
+    }
+
+    .technology-info {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .technology-img {
+        /* padding: 3rem; */
+        width: 80%;
+    }
+}
+
+@media (max-width: 575px) {
+    body {
+        background-image: url(./assets/home/background-home-mobile.jpg);
+        height: 100%;
+    }
+
+    .logo {
+        margin-top: 1rem;
+    }
+
+    .hamburger-menu {
+        display: block;
+        position: absolute;
+        right: 1rem;
+        z-index: 1000;
+    }
+
+    .navbar {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-container {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        transition: 0.3s;
+    }
+
+    .nav-container.active {
+        right: 0;
+    }
+
+    .navbar {
+        flex-direction: column;
+        padding: 10.4rem 4rem;
+    }
+
+    .navbar li {
+        margin: 1.3rem 0;
+    }
+
+    .nav-link {
+        font-size: 1.2rem;
+        color: rgb(19, 21, 34);
+    }
+
+    .hamburger-menu.active span:nth-child(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .hamburger-menu.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger-menu.active span:nth-child(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+
+    .home-main {
+        padding: 4rem 1rem;
+    }
+
+    .main-left-side h1 {
+        font-size: 5rem;
+        padding: 2rem 0rem;
+    }
+
+    .main-left-side p:first-child {
+        white-space: wrap;
+        margin-top: 2rem;
+    }
+
+    .main-left-side p:last-child {
+        width: 100%;
+        padding: 1rem 0rem;
+    }
+
+    .main-right-side {
+        margin: 1rem 0rem;
+    }
+
+    /* Destination Section */
+    .destination-container {
+        padding: 4rem 1rem;
+    }
+
+    .destination-title {
+        font-size: 0.9rem;
+    }
+
+    .destination-nav-link {
+        font-size: 0.7rem;
+    }
+
+    .destination-info-title {
+        font-size: 2.6rem;
+    }
+
+    .destination-description {
+        font-size: 0.7rem;
+    }
+
+    .distance p:first-child,
+    .travel-time p:first-child {
+        font-size: 0.5rem;
+    }
+
+    .distance p:last-child,
+    .travel-time p:last-child {
+        font-size: 0.8rem;
+    }
+    
+    /* Crew Section */
+
+    .crew-container {
+        padding: 2rem 1rem;
+    }
+
+    .crew-title {
+        font-size: 0.9rem;
+    }
+
+    /* Technology Section */
+
+    .technology-container {
+        padding: 1rem;
+    }
+
+    .technology-title {
+        margin: 0;
+    }
+
+    .technology-info {
+        gap: 0;
+        flex-direction: column-reverse;
+        text-align: center;
+    }
+
+    .technology-little-title {
+        font-size: 0.7rem;
+    }
+    
+    .technology-info-title {
+        font-size: 2rem;
+    }
+
+    .technology-description {
+        font-size: 0.7rem;
+    }
+
+    .change-technology {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .change-technology span {
+        width: 30px;
+        height: 30px;
+    }
+
+    .technology-img {
+        padding: 1rem 1rem;
+    }
+}
