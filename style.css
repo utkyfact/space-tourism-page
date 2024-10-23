@@ -11,7 +11,7 @@ body {
     background-image: url(./assets/home/background-home-desktop.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    height: 100dvh;
+    height: 100%;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif, Bellefair, serif, Barlow Condensed, Barlow;
 }
 
@@ -430,11 +430,6 @@ nav {
 }
 
 @media (min-width: 1440px) {
-
-    body {
-        height: 100dvh;
-    }
-
     #wrapper {
         padding-bottom: 2rem;
     }
@@ -471,7 +466,6 @@ nav {
 @media (max-width: 768px) {
     body {
         background-image: url(./assets/home/background-home-tablet.jpg);
-        height: 100%;
     }
 
     #wrapper {
@@ -626,7 +620,6 @@ nav {
 @media (max-width: 575px) {
     body {
         background-image: url(./assets/home/background-home-mobile.jpg);
-        height: 100%;
     }
 
     .logo {
