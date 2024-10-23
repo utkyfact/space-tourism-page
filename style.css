@@ -182,7 +182,7 @@ nav {
 .destination-container {
     display: flex;
     color: white;
-    padding: 4rem 6rem;
+    padding: 4rem 1rem;
     gap: 6rem;
 }
 
@@ -561,6 +561,11 @@ nav {
         white-space: nowrap;
     }
 
+
+    .destination-info-footer {
+        flex-direction: column;
+        gap: 1rem;
+    }
     /* Crew Section */
     .crew-title {
         font-size: 1.2rem;
@@ -719,11 +724,11 @@ nav {
     }
 
     .destination-title {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 
     .destination-nav-link {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
 
     .destination-info-title {
@@ -731,12 +736,12 @@ nav {
     }
 
     .destination-description {
-        font-size: 0.7rem;
+        font-size: 0.8rem;
     }
 
     .distance p:first-child,
     .travel-time p:first-child {
-        font-size: 0.5rem;
+        font-size: 0.8rem;
     }
 
     .distance p:last-child,
