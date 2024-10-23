@@ -192,12 +192,22 @@ nav {
     margin: 0rem 6rem;
 }
 
+@keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(-360deg);
+    }
+  }
+
 .planet-img {
     width: 50%;
 }
 
 .planet-img img {
     width: 100%;
+    animation: rotate 10s linear infinite;
 }
 
 .destination-info {
@@ -591,6 +601,7 @@ nav {
         justify-content: center;
         align-items: center;
         width: 70%;
+        border-bottom: 1px solid gray;
     }
 
     /* Technology Section */
