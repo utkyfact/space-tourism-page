@@ -203,6 +203,7 @@ nav {
 
 .planet-img {
     width: 50%;
+    z-index: -1;
 }
 
 .planet-img img {
