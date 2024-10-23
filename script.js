@@ -191,8 +191,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         // Sayfa spesifik initialize işlemleri
                         if (url === '/destination.html') {
                             setupDestinationNavigation();
+                            setupHamburgerMenu();
                         } else if (url === '/crew.html') {
                             setupCrewNavigation();
+                            setupHamburgerMenu();
                         }
                     })
                     .catch(error => console.error('Fetch hatası:', error));
