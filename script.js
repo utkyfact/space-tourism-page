@@ -4,271 +4,233 @@ document.addEventListener('DOMContentLoaded', function () {
     const hamburger = document.querySelector('.hamburger-menu');
     const navContainer = document.querySelector('.nav-container');
     const originalContent = wrapper.innerHTML;
-
-    // Hamburger menü ayarları
-    function setupHamburgerMenu() {
-        if (hamburger && navContainer) {
-            hamburger.addEventListener('click', function () {
-                hamburger.classList.toggle('active');
-                navContainer.classList.toggle('active');
-            });
+    
+    let cachedData = null;
+    
+    async function fetchAndCacheData() {
+        if (cachedData) return cachedData;
+        try {
+            const response = await fetch('data.json');
+            cachedData = await response.json();
+            return cachedData;
+        } catch (error) {
+            console.error('Data fetching error:', error);
+            return null;
         }
     }
 
-    // Crew sayfası fonksiyonları
-    function setupCrewNavigation() {
+    function setupHamburgerMenu() {
+        if (!hamburger || !navContainer) return;
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navContainer.classList.toggle('active');
+        });
+    }
+
+    // Crew sayfası fonksiyonu
+    async function setupCrewNavigation() {
         const dots = document.querySelectorAll('.dot');
+        if (!dots.length) return;
 
-        function updateCrewInfo(index, crews) {
+        const data = await fetchAndCacheData();
+        if (!data) return;
+
+        const crews = data.crew;
+
+        function updateCrewInfo(index) {
             const crew = crews[index];
+            const elements = {
+                role: document.getElementById('crew-role'),
+                name: document.getElementById('crew-name'),
+                bio: document.getElementById('crew-bio'),
+                img: document.getElementById('crew-img')
+            };
 
-            const roleElement = document.getElementById('crew-role');
-            const nameElement = document.getElementById('crew-name');
-            const bioElement = document.getElementById('crew-bio');
-            const imgElement = document.getElementById('crew-img');
-
-            // Crew bilgilerini güncelleme
-            if (roleElement) roleElement.textContent = crew.role;
-            if (nameElement) nameElement.textContent = crew.name;
-            if (bioElement) bioElement.textContent = crew.bio;
-            if (imgElement) imgElement.src = crew.images.png;
+            if (elements.role) elements.role.textContent = crew.role;
+            if (elements.name) elements.name.textContent = crew.name;
+            if (elements.bio) elements.bio.textContent = crew.bio;
+            if (elements.img) elements.img.src = crew.images.png;
         }
 
         function updateActiveDot(activeIndex) {
             dots.forEach((dot, index) => {
-                if (index === activeIndex) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
+                dot.classList.toggle('active', index === activeIndex);
             });
         }
 
-        if (dots.length > 0) {
-            fetch('data.json')
-                .then(response => response.json())
-                .then(data => {
-                    const crews = data.crew;
-                    // İlk crew üyesini göster
-                    updateCrewInfo(0, crews);
-                    updateActiveDot(0);
+        // İlk crew üyesini göster
+        updateCrewInfo(0);
+        updateActiveDot(0);
 
-                    // Noktalara tıklama eventi
-                    dots.forEach((dot, index) => {
-                        dot.addEventListener('click', () => {
-                            updateCrewInfo(index, crews);
-                            updateActiveDot(index);
-                        });
-                    });
-                })
-                .catch(error => console.log('Veri çekme hatası: ', error));
-        }
-    }
-
-    // Destination sayfası navigasyonu
-    function setupDestinationNavigation() {
-        const destNavLinks = document.querySelectorAll('.destination-nav-link');
-        const planetImg = document.querySelector('.planet-img img');
-        const destinationTitle = document.querySelector('.destination-info-title');
-        const destinationDesc = document.querySelector('.destination-description');
-        const distanceValue = document.querySelector('.distance p:last-child');
-        const travelTimeValue = document.querySelector('.travel-time p:last-child');
-
-        if (destNavLinks.length > 0) {
-            fetch('data.json')
-                .then(response => response.json())
-                .then(data => {
-                    const destinations = data.destinations;
-
-                    destNavLinks.forEach(link => {
-                        link.addEventListener('click', function (e) {
-                            e.preventDefault();
-
-                            // Aktif link'i güncelle
-                            destNavLinks.forEach(link => link.classList.remove('active'));
-                            this.classList.add('active');
-
-                            // Tıklanan gezegenin adını al
-                            const planetName = this.textContent.toLowerCase();
-
-                            // Data.json'dan ilgili gezegen verisini bul
-                            const planetData = destinations.find(dest =>
-                                dest.name.toLowerCase() === planetName
-                            );
-
-                            if (planetData) {
-                                // Görseli güncelle
-                                planetImg.src = planetData.images.webp;
-                                planetImg.alt = planetData.name;
-
-                                // Başlığı güncelle
-                                destinationTitle.textContent = planetData.name;
-
-                                // Açıklamayı güncelle
-                                destinationDesc.textContent = planetData.description;
-
-                                // Mesafe bilgisini güncelle
-                                distanceValue.textContent = planetData.distance;
-
-                                // Seyahat süresini güncelle
-                                travelTimeValue.textContent = planetData.travel;
-                            }
-                        });
-                    });
-
-                    // Sayfa ilk yüklendiğinde Moon'u göster
-                    const moonData = destinations.find(dest =>
-                        dest.name.toLowerCase() === 'moon'
-                    );
-
-                    if (moonData) {
-                        planetImg.src = moonData.images.webp;
-                        planetImg.alt = moonData.name;
-                        destinationTitle.textContent = moonData.name;
-                        destinationDesc.textContent = moonData.description;
-                        distanceValue.textContent = moonData.distance;
-                        travelTimeValue.textContent = moonData.travel;
-                        destNavLinks[0].classList.add('active');
-                    }
-                })
-                .catch(error => console.error('Veri yükleme hatası:', error));
-        };
-    };
-
-
-
-    function initializePageSpecificFunctionality() {
-        // Ana navigasyon linkleri
-        navLinks.forEach(link => {
-            link.addEventListener('click', function (event) {
-                event.preventDefault();
-                const clickedLinkId = this.id;
-                let url;
-                switch (clickedLinkId) {
-                    case 'nav-home':
-                        document.body.style.backgroundImage = "url('/assets/home/background-home-desktop.jpg')";
-                        url = 'home';
-                        break;
-                    case 'nav-dest':
-                        document.body.style.backgroundImage = "url('/assets/destination/background-destination-desktop.jpg')";
-                        url = '/destination.html';
-                        break;
-                    case 'nav-crew':
-                        document.body.style.backgroundImage = "url('/assets/crew/background-crew-desktop.jpg')";
-                        url = '/crew.html';
-                        break;
-                    case 'nav-tech':
-                        document.body.style.backgroundImage = "url('/assets/technology/background-technology-desktop.jpg')";
-                        url = '/technology.html';
-                        break;
-                    default:
-                        console.log('Geçersiz link');
-                        return;
-                }
-                loadContent(url);
-
-                // Nav linklerinin aktif durumunu güncelleme
-                navLinks.forEach(link => link.classList.remove('active'));
-                this.classList.add('active');
-
-                // Hamburger menüyü kapatma
-                hamburger.classList.remove('active');
-                navContainer.classList.remove('active');
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                updateCrewInfo(index);
+                updateActiveDot(index);
             });
         });
+    }
 
-        // Technology sayfası fonksiyonları
-        function setupTechnologyNavigation() {
-            const techLinks = document.querySelectorAll('.change-technology-link');
-            const techImg = document.querySelector('.technology-img img');
-            const techTitle = document.querySelector('.technology-info-title');
-            const techDesc = document.querySelector('.technology-description');
+    // Technology sayfası fonksiyonu
+    async function setupTechnologyNavigation() {
+        const techLinks = document.querySelectorAll('.change-technology-link');
+        if (!techLinks.length) return;
 
-            if (techLinks.length > 0) {
-                fetch('data.json')
-                    .then(response => response.json())
-                    .then(data => {
-                        const technologies = data.technology;
+        const data = await fetchAndCacheData();
+        if (!data) return;
 
-                        // İlk teknoloji bilgisi
-                        updateTechnologyInfo(0, technologies);
-                        techLinks[0].classList.add('active');
+        const technologies = data.technology;
 
-                        // Link'lere tıklama eventi
-                        techLinks.forEach((link, index) => {
-                            link.addEventListener('click', () => {
-                                // Aktif link'i güncelleme
-                                techLinks.forEach(link => link.classList.remove('active'));
-                                link.classList.add('active');
-
-                                // Teknoloji bilgilerini güncelleme
-                                updateTechnologyInfo(index, technologies);
-                            });
-                        });
-                    })
-                    .catch(error => console.error('Teknoloji verisi yükleme hatası:', error));
-            }
-        }
-
-        function updateTechnologyInfo(index, technologies) {
+        function updateTechnologyInfo(index) {
             const tech = technologies[index];
-            const techImg = document.querySelector('.technology-img img');
-            const techTitle = document.querySelector('.technology-info-title');
-            const techDesc = document.querySelector('.technology-description');
+            const elements = {
+                img: document.querySelector('.technology-img img'),
+                title: document.querySelector('.technology-info-title'),
+                desc: document.querySelector('.technology-description')
+            };
 
-            // Responsive tasarım bölümü
             const isPortrait = window.innerWidth >= 768;
             const imagePath = isPortrait ? tech.images.portrait : tech.images.landscape;
 
-            techImg.src = imagePath;
-            techImg.alt = tech.name;
-            techTitle.textContent = tech.name;
-            techDesc.textContent = tech.description;
-        }
-
-        // İçerik yükleme fonksiyonu
-        function loadContent(url) {
-            if (url === 'home') {
-                wrapper.innerHTML = originalContent;
-                initializePageSpecificFunctionality();
-                setupHamburgerMenu();
-            } else {
-                fetch(url)
-                    .then(response => response.text())
-                    .then(data => {
-                        wrapper.innerHTML = data;
-                        initializePageSpecificFunctionality();
-                        setupHamburgerMenu();
-                        // Sayfa spesifik initialize işlemleri
-                        if (url === '/destination.html') {
-                            setupDestinationNavigation();
-                            setupHamburgerMenu();
-                        } else if (url === '/crew.html') {
-                            setupCrewNavigation();
-                            setupHamburgerMenu();
-                        } else if (url === '/technology.html') {
-                            setupTechnologyNavigation();
-                            setupHamburgerMenu();
-                        }
-                    })
-                    .catch(error => console.error('Fetch hatası:', error));
+            if (elements.img) {
+                elements.img.src = imagePath;
+                elements.img.alt = tech.name;
             }
+            if (elements.title) elements.title.textContent = tech.name;
+            if (elements.desc) elements.desc.textContent = tech.description;
         }
 
+        // İlk teknoloji bilgisini göster
+        updateTechnologyInfo(0);
+        techLinks[0].classList.add('active');
 
-        // Sayfa spesifik kontrolleri
-        if (document.querySelector('.destination-container')) {
-            setupDestinationNavigation();
-        }
-        if (document.querySelector('.dot')) {
-            setupCrewNavigation();
-        }
-        if (document.querySelector('.technology-container')) {
-            setupTechnologyNavigation();
-        }
-    };
+        techLinks.forEach((link, index) => {
+            link.addEventListener('click', () => {
+                techLinks.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                updateTechnologyInfo(index);
+            });
+        });
 
-    // İlk yüklemede hamburger menüyü ve sayfa fonksiyonlarını başlatma
+        // Responsive image handling
+        window.addEventListener('resize', () => {
+            const currentActive = Array.from(techLinks).findIndex(link => 
+                link.classList.contains('active')
+            );
+            updateTechnologyInfo(currentActive);
+        });
+    }
+
+    async function setupDestinationNavigation() {
+        const destNavLinks = document.querySelectorAll('.destination-nav-link');
+        if (!destNavLinks.length) return;
+
+        const data = await fetchAndCacheData();
+        if (!data) return;
+
+        const elements = {
+            planetImg: document.querySelector('.planet-img img'),
+            title: document.querySelector('.destination-info-title'),
+            desc: document.querySelector('.destination-description'),
+            distance: document.querySelector('.distance p:last-child'),
+            travelTime: document.querySelector('.travel-time p:last-child')
+        };
+
+        function updateDestination(planetData) {
+            if (!planetData || !elements.planetImg) return;
+            
+            elements.planetImg.src = planetData.images.webp;
+            elements.planetImg.alt = planetData.name;
+            elements.title.textContent = planetData.name;
+            elements.desc.textContent = planetData.description;
+            elements.distance.textContent = planetData.distance;
+            elements.travelTime.textContent = planetData.travel;
+        }
+
+        destNavLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                destNavLinks.forEach(link => link.classList.remove('active'));
+                e.target.classList.add('active');
+
+                const planetName = e.target.textContent.toLowerCase();
+                const planetData = data.destinations.find(dest => 
+                    dest.name.toLowerCase() === planetName
+                );
+                
+                updateDestination(planetData);
+            });
+        });
+
+        // Initialize with Moon
+        updateDestination(data.destinations[0]);
+        destNavLinks[0].classList.add('active');
+    }
+
+    async function loadContent(url) {
+        try {
+            wrapper.style.opacity = '0.6';
+            
+            let content;
+            if (url === 'home') {
+                content = originalContent;
+            } else {
+                const response = await fetch(url);
+                content = await response.text();
+            }
+
+            wrapper.style.opacity = '0';
+            await new Promise(resolve => setTimeout(resolve, 200));
+            
+            wrapper.innerHTML = content;
+            
+            setupHamburgerMenu();
+            if (url.includes('destination')) {
+                await setupDestinationNavigation();
+            } else if (url.includes('crew')) {
+                await setupCrewNavigation();
+            } else if (url.includes('technology')) {
+                await setupTechnologyNavigation();
+            }
+
+            wrapper.style.opacity = '1';
+            
+        } catch (error) {
+            console.error('Content loading error:', error);
+            wrapper.innerHTML = '<p>Error loading content. Please try again.</p>';
+        }
+    }
+
+    // Navigation event listeners
+    navLinks.forEach(link => {
+        link.addEventListener('click', async function(event) {
+            event.preventDefault();
+            
+            const routes = {
+                'nav-home': { url: 'home', bg: '/assets/home/background-home-desktop.jpg' },
+                'nav-dest': { url: '/destination.html', bg: '/assets/destination/background-destination-desktop.jpg' },
+                'nav-crew': { url: '/crew.html', bg: '/assets/crew/background-crew-desktop.jpg' },
+                'nav-tech': { url: '/technology.html', bg: '/assets/technology/background-technology-desktop.jpg' }
+            };
+
+            const route = routes[this.id];
+            if (!route) return;
+
+            navLinks.forEach(link => link.classList.remove('active'));
+            this.classList.add('active');
+
+            document.body.style.backgroundImage = `url('${route.bg}')`;
+
+            if (hamburger && navContainer) {
+                hamburger.classList.remove('active');
+                navContainer.classList.remove('active');
+            }
+
+            await loadContent(route.url);
+        });
+    });
+
+    // Initial setup
     setupHamburgerMenu();
-    initializePageSpecificFunctionality();
+    fetchAndCacheData();
 });
