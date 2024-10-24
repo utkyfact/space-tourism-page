@@ -227,6 +227,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }
 
             await loadContent(route.url);
+            setupHamburgerMenu();
         });
     });
 
