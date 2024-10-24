@@ -132,8 +132,10 @@ document.addEventListener('DOMContentLoaded', function () {
                     }
                 })
                 .catch(error => console.error('Veri yükleme hatası:', error));
-        }
-    }
+        };
+    };
+
+
 
     function initializePageSpecificFunctionality() {
         // Ana navigasyon linkleri
@@ -165,7 +167,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
                 loadContent(url);
 
-                // Nav linklerinin aktif durumunu güncelle
+                // Nav linklerinin aktif durumunu güncelleme
                 navLinks.forEach(link => link.classList.remove('active'));
                 this.classList.add('active');
 
@@ -201,16 +203,69 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
 
-        // Sayfa spesifik kontroller
+        // Technology sayfası fonksiyonları
+        function setupTechnologyNavigation() {
+            const techLinks = document.querySelectorAll('.change-technology-link');
+            const techImg = document.querySelector('.technology-img img');
+            const techTitle = document.querySelector('.technology-info-title');
+            const techDesc = document.querySelector('.technology-description');
+
+            if (techLinks.length > 0) {
+                fetch('data.json')
+                    .then(response => response.json())
+                    .then(data => {
+                        const technologies = data.technology;
+
+                        // İlk teknoloji bilgisi
+                        updateTechnologyInfo(0, technologies);
+                        techLinks[0].classList.add('active');
+
+                        // Link'lere tıklama eventi
+                        techLinks.forEach((link, index) => {
+                            link.addEventListener('click', () => {
+                                // Aktif link'i güncelleme
+                                techLinks.forEach(link => link.classList.remove('active'));
+                                link.classList.add('active');
+
+                                // Teknoloji bilgilerini güncelleme
+                                updateTechnologyInfo(index, technologies);
+                            });
+                        });
+                    })
+                    .catch(error => console.error('Teknoloji verisi yükleme hatası:', error));
+            }
+        }
+
+        function updateTechnologyInfo(index, technologies) {
+            const tech = technologies[index];
+            const techImg = document.querySelector('.technology-img img');
+            const techTitle = document.querySelector('.technology-info-title');
+            const techDesc = document.querySelector('.technology-description');
+
+            // Responsive tasarım bölümü
+            const isPortrait = window.innerWidth >= 768;
+            const imagePath = isPortrait ? tech.images.portrait : tech.images.landscape;
+
+            techImg.src = imagePath;
+            techImg.alt = tech.name;
+            techTitle.textContent = tech.name;
+            techDesc.textContent = tech.description;
+        }
+
+
+        // Sayfa spesifik kontrolleri
         if (document.querySelector('.destination-container')) {
             setupDestinationNavigation();
         }
         if (document.querySelector('.dot')) {
             setupCrewNavigation();
         }
-    }
+        if (document.querySelector('.technology-container')) {
+            setupTechnologyNavigation();
+        }
+    };
 
-    // İlk yüklemede hamburger menüyü ve sayfa fonksiyonlarını başlat
+    // İlk yüklemede hamburger menüyü ve sayfa fonksiyonlarını başlatma
     setupHamburgerMenu();
     initializePageSpecificFunctionality();
 });
