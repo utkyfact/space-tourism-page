@@ -14,7 +14,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://space-tourism-page-chi.vercel.app/)
+- Live Site URL: [Utkyfact/vercel](https://space-tourism-page-chi.vercel.app/)
 
 ## My process
 
@@ -44,9 +44,9 @@ In my future projects, I definitely won't use such a structure. This was somethi
 
 ## Author
 
-- Website - [Add your name here](https://vercel.com/utkyfacts-projects/my-portfolio)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/utkyfact)
-- Twitter - [@yourusername](https://www.twitter.com/utkyfact)
+- Website - [Utku Şen](https://vercel.com/utkyfacts-projects/my-portfolio)
+- Frontend Mentor - [@Utkyfact](https://www.frontendmentor.io/profile/utkyfact)
+- Twitter - [@Utkyfact](https://www.twitter.com/utkyfact)
 
 
 ## Acknowledgments
