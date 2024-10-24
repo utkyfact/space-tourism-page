@@ -113,7 +113,8 @@ nav {
 
 #wrapper {
     margin: auto;
-    padding-bottom: 12rem;
+    padding: 3rem;
+    transition: opacity 0.2s ease-in-out;
 }
 
 /* Home section */
@@ -122,7 +123,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 7rem;
+    padding: 8rem 2rem;
 }
 
 .main-left-side {
@@ -148,7 +149,6 @@ nav {
     font-size: 0.8rem;
     color: rgb(207, 213, 238);
     line-height: 1.2rem;
-    width: 70%;
 }
 
 .main-left-side h1 {
@@ -466,11 +466,6 @@ nav {
 }
 
 @media (min-width: 1440px) {
-
-    #wrapper {
-        padding-bottom: 2rem;
-    }
-
     .line {
         width: 65%;
     }
@@ -507,7 +502,7 @@ nav {
 
     #wrapper {
         width: 100%;
-        padding-bottom: 6rem;
+        padding: 3rem 0rem;
     }
 
     nav {
@@ -661,10 +656,6 @@ nav {
 @media (max-width: 575px) {
     body {
         background-image: url(./assets/home/background-home-mobile.jpg);
-    }
-
-    #wrapper {
-        padding-bottom:4rem;
     }
 
     .logo {
