@@ -177,32 +177,6 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 
-        // İçerik yükleme fonksiyonu
-        function loadContent(url) {
-            if (url === 'home') {
-                wrapper.innerHTML = originalContent;
-                initializePageSpecificFunctionality();
-                setupHamburgerMenu();
-            } else {
-                fetch(url)
-                    .then(response => response.text())
-                    .then(data => {
-                        wrapper.innerHTML = data;
-                        initializePageSpecificFunctionality();
-                        setupHamburgerMenu();
-                        // Sayfa spesifik initialize işlemleri
-                        if (url === '/destination.html') {
-                            setupDestinationNavigation();
-                            setupHamburgerMenu();
-                        } else if (url === '/crew.html') {
-                            setupCrewNavigation();
-                            setupHamburgerMenu();
-                        }
-                    })
-                    .catch(error => console.error('Fetch hatası:', error));
-            }
-        }
-
         // Technology sayfası fonksiyonları
         function setupTechnologyNavigation() {
             const techLinks = document.querySelectorAll('.change-technology-link');
@@ -250,6 +224,35 @@ document.addEventListener('DOMContentLoaded', function () {
             techImg.alt = tech.name;
             techTitle.textContent = tech.name;
             techDesc.textContent = tech.description;
+        }
+
+        // İçerik yükleme fonksiyonu
+        function loadContent(url) {
+            if (url === 'home') {
+                wrapper.innerHTML = originalContent;
+                initializePageSpecificFunctionality();
+                setupHamburgerMenu();
+            } else {
+                fetch(url)
+                    .then(response => response.text())
+                    .then(data => {
+                        wrapper.innerHTML = data;
+                        initializePageSpecificFunctionality();
+                        setupHamburgerMenu();
+                        // Sayfa spesifik initialize işlemleri
+                        if (url === '/destination.html') {
+                            setupDestinationNavigation();
+                            setupHamburgerMenu();
+                        } else if (url === '/crew.html') {
+                            setupCrewNavigation();
+                            setupHamburgerMenu();
+                        } else if (url === '/technology.html') {
+                            setupTechnologyNavigation();
+                            setupHamburgerMenu();
+                        }
+                    })
+                    .catch(error => console.error('Fetch hatası:', error));
+            }
         }
 
 
