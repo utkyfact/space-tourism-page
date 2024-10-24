@@ -113,7 +113,7 @@ nav {
 
 #wrapper {
     margin: auto;
-    padding-bottom: 4rem;
+    padding-bottom: 12rem;
 }
 
 /* Home section */
@@ -507,6 +507,7 @@ nav {
 
     #wrapper {
         width: 100%;
+        padding-bottom: 6rem;
     }
 
     nav {
@@ -660,6 +661,10 @@ nav {
 @media (max-width: 575px) {
     body {
         background-image: url(./assets/home/background-home-mobile.jpg);
+    }
+
+    #wrapper {
+        padding-bottom:4rem;
     }
 
     .logo {
