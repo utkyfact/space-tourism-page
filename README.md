@@ -14,7 +14,7 @@ Users should be able to:
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://vercel.com/utkyfacts-projects/space-tourism-page)
+- Live Site URL: [Add live site URL here](https://space-tourism-page-chi.vercel.app/)
 
 ## My process
 
