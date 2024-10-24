@@ -240,11 +240,12 @@ nav {
 }
 
 .destination-nav-link {
+    font-size: 1.2rem;
     list-style-type: none;
     color: white;
     text-transform: uppercase;
     margin-right: 0.8rem;
-    padding: 0.6rem 0rem;
+    padding: 1rem 0rem;
     border-bottom: 2px solid transparent;
     cursor: pointer;
 }
