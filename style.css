@@ -83,7 +83,7 @@ nav {
 
 .navbar span {
     color: white;
-    font-size: 0.8rem;
+    font-size: 1.3rem;
 }
 
 .navbar li {
@@ -94,7 +94,7 @@ nav {
 .nav-link {
     display: flex;
     gap: 0.3rem;
-    font-size: 0.8rem;
+    font-size: 1.3rem;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.775);
     text-transform: uppercase;
