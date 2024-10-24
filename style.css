@@ -62,7 +62,7 @@ nav {
 
 .line {
     position: absolute;
-    border: 1px solid rgba(128, 128, 128, 0.208);
+    border: 1px solid rgba(128, 128, 128, 0.526);
     width: 60%;
     left: -49%;
     transform: translate(100%, 100%);
@@ -93,17 +93,22 @@ nav {
 
 .nav-link {
     display: flex;
-    flex-direction: column;
+    gap: 0.3rem;
     font-size: 0.8rem;
     text-decoration: none;
-    color: white;
+    color: rgba(255, 255, 255, 0.775);
     text-transform: uppercase;
     padding-bottom: 1.5rem;
     border-bottom: 2px solid transparent;
+    font-weight: 100;
 }
 
 .nav-link.active {
     border-bottom: 2px solid white;
+}
+
+.nav-link span {
+    font-weight: 400;
 }
 
 #wrapper {
@@ -116,7 +121,7 @@ nav {
 .home-main {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: 7rem;
 }
 
@@ -151,29 +156,44 @@ nav {
     text-transform: uppercase;
 }
 
-.main-right-side {
+.explore-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
     display: flex;
-    align-items: end;
-    width: 50%;
-    margin-right: 2rem;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
-.explore {
+.outer-circle {
+    width: 18rem;
+    height: 18rem;
+    border-radius: 50%;
+    background-color: #ffffff89;
+    opacity: 0;
+    position: absolute;
+    transform: scale(0);
+    transition: all 0.5s ease;
+}
+
+.inner-circle {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
-    color: black;
-    width: 3rem;
-    height: 3rem;
+    width: 6rem;
+    height: 6rem;
     padding: 5rem;
-    border-radius: 100%;
-    margin-left: auto;
+    border-radius: 50%;
+    background-color: #fff;
+    position: relative;
+    cursor: pointer;
+    z-index: 2;
 }
 
-.explore:hover {
-    box-shadow: 0px 0px 25px white;
-    cursor: pointer;
+.explore-container:hover .outer-circle {
+    opacity: 0.3;
+    transform: scale(1);
 }
 
 /* Destination Section */
@@ -198,12 +218,13 @@ nav {
 
 @keyframes rotate {
     from {
-      transform: rotate(0deg);
+        transform: rotate(0deg);
     }
+
     to {
-      transform: rotate(-360deg);
+        transform: rotate(-360deg);
     }
-  }
+}
 
 .planet-img img {
     width: 100%;
@@ -219,7 +240,7 @@ nav {
 }
 
 .destination-nav-link {
-    list-style-type:none;
+    list-style-type: none;
     color: white;
     text-transform: uppercase;
     margin-right: 0.8rem;
@@ -498,10 +519,6 @@ nav {
         background-color: rgb(19, 21, 34);
     }
 
-    .nav-link {
-        padding-bottom: 3rem;
-    }
-
     .navbar span {
         display: none;
     }
@@ -537,8 +554,8 @@ nav {
         padding: 4rem 0rem;
     }
 
-    .explore {
-        margin: auto;
+    .explore-container {
+        margin-top: 3.5rem;
     }
 
     /* Destination Section */
@@ -669,6 +686,7 @@ nav {
         background-color: rgba(255, 255, 255, 0.1);
         backdrop-filter: blur(10px);
         transition: 0.3s;
+        z-index: 5;
     }
 
     .nav-container.active {
@@ -686,7 +704,8 @@ nav {
 
     .nav-link {
         font-size: 1.2rem;
-        color: rgb(19, 21, 34);
+        color: white;
+        z-index: 5;
     }
 
     .hamburger-menu.active span:nth-child(1) {
@@ -720,8 +739,15 @@ nav {
         padding: 1rem 0rem;
     }
 
-    .main-right-side {
-        margin: 1rem 0rem;
+    .outer-circle {
+        width: 14rem;
+        height: 14rem;
+    }
+    
+    .inner-circle {
+        width: 4rem;
+        height: 4rem;
+        padding: 3rem;
     }
 
     /* Destination Section */
@@ -754,7 +780,7 @@ nav {
     .travel-time p:last-child {
         font-size: 0.8rem;
     }
-    
+
     /* Crew Section */
 
     .crew-container {
@@ -784,7 +810,7 @@ nav {
     .technology-little-title {
         font-size: 0.7rem;
     }
-    
+
     .technology-info-title {
         font-size: 2rem;
     }
@@ -796,14 +822,11 @@ nav {
     .change-technology {
         flex-direction: row;
         justify-content: center;
+        padding: 1rem 0rem;
     }
 
     .change-technology span {
         width: 30px;
         height: 30px;
-    }
-
-    .technology-img {
-        padding: 1rem 1rem;
     }
 }
