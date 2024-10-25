@@ -210,6 +210,7 @@ nav {
 
 .planet-img {
     width: 50%;
+    padding: 3rem;
     z-index: -1;
 }
 
@@ -489,6 +490,12 @@ nav {
         width: 8rem;
         height: 8rem;
         padding: 12rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .planet-img {
+        padding: 0rem;
     }
 }
 
