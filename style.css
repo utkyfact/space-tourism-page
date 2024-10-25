@@ -318,6 +318,7 @@ nav {
 }
 
 .crew-role {
+    font-size: 1.2rem;
     text-transform: uppercase;
     color: rgba(255, 255, 255, 0.711);
 }
@@ -330,7 +331,7 @@ nav {
 }
 
 .crew-description {
-    font-size: 0.8rem;
+    font-size: 1rem;
     margin: 1rem 0rem;
     line-height: 1.4rem;
     color: rgba(255, 255, 255, 0.711);
@@ -411,7 +412,6 @@ nav {
 
 .technology-little-title {
     text-transform: uppercase;
-    font-size: 0.8rem;
     color: #D0D6F9;
 }
 
@@ -424,7 +424,6 @@ nav {
 .technology-description {
     margin: 1rem 0rem;
     line-height: 1.4rem;
-    font-size: 0.8rem;
     color: #D0D6F9;
 }
 
