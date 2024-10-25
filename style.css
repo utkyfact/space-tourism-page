@@ -465,6 +465,19 @@ nav {
 }
 
 @media (min-width: 1440px) {
+    .nav-link {
+        font-size: 1.8rem;
+    }
+
+    .logo {
+        width: 5rem;
+        height: 5rem;
+    }
+
+    h1 {
+        font-size: 14rem;
+    }
+    
     .line {
         width: 65%;
     }
@@ -485,12 +498,94 @@ nav {
         font-size: 1.5rem;
     }
 
-    .explore {
-        font-size: 2rem;
+    .inner-circle {
         width: 8rem;
         height: 8rem;
-        padding: 12rem;
+        padding: 10rem;
     }
+
+    .outer-circle {
+        width: 30rem;
+        height: 30rem;
+    }
+
+    .explore-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    /*  Destination  */
+
+    .destination-title, h2 span {
+        font-size: 2rem;
+    }
+
+    .destination-nav-link {
+        font-size: 1.5rem;
+    }
+
+    .destination-info-title {
+        font-size: 6rem;
+    }
+
+    .destination-description {
+        font-size: 1.5rem;
+    }
+
+    .distance p:first-child, .travel-time p:first-child {
+        font-size: 1.3rem;
+    }
+
+    .distance p:last-child, .travel-time p:last-child {
+        font-size: 1.4rem;
+    }
+
+    /*  Crew  Section   */
+
+    .crew-role {
+        font-size: 2rem;
+    }
+
+    .crew-info-title {
+        font-size: 4rem;
+    }
+
+    .crew-description {
+        font-size: 1.5rem;
+    }
+
+    .dot {
+        width: 20px;
+        height: 20px;
+    }
+
+    /*  Technology    */
+
+    .technology-title {
+        font-size: 2rem;
+    }
+
+    .technology-little-title {
+        font-size: 1.8rem;
+    }
+
+    .technology-info-title {
+        font-size: 4rem;
+    }
+
+    .technology-description {
+        font-size: 1.5rem;
+    }
+
+    .change-technology button {
+        width: 70px;
+        height: 70px;
+    }
+
+    button.change-technology-link.active {
+    font-size: 1.5rem;
+    }
+
 }
 
 @media (max-width: 900px) {
