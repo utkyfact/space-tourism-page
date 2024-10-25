@@ -83,7 +83,6 @@ nav {
 
 .navbar span {
     color: white;
-    font-size: 1.3rem;
 }
 
 .navbar li {
@@ -94,7 +93,6 @@ nav {
 .nav-link {
     display: flex;
     gap: 0.3rem;
-    font-size: 1.3rem;
     text-decoration: none;
     color: rgba(255, 255, 255, 0.775);
     text-transform: uppercase;
@@ -146,7 +144,6 @@ nav {
 }
 
 .main-left-side p:last-child {
-    font-size: 0.8rem;
     color: rgb(207, 213, 238);
     line-height: 1.6rem;
 }
@@ -262,7 +259,7 @@ nav {
 
 .destination-description {
     color: rgba(234, 234, 234, 0.69);
-    font-size: 1rem;
+    font-size: 1.1rem;
     line-height: 1.2rem;
 }
 
@@ -288,7 +285,7 @@ nav {
 
 .distance p:first-child,
 .travel-time p:first-child {
-    font-size: 0.6rem;
+    font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.711);
     margin-bottom: 0.3rem;
 }
@@ -306,7 +303,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0rem 2rem;
+    padding: 0rem 2rem 6rem 2rem;
     gap: 7rem;
 }
 
@@ -373,7 +370,7 @@ nav {
 .technology-title {
     color: white;
     text-transform: uppercase;
-    margin: 0rem 6rem;
+    margin: 0rem 3rem;
 }
 
 .technology-container {
@@ -381,7 +378,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0rem 0rem 7rem 5rem;
+    padding: 0rem 0rem 7rem 2rem;
     gap: 6rem;
 }
 
@@ -536,6 +533,7 @@ nav {
 
     .main-left-side h1 {
         font-size: 7rem;
+        padding: 1rem 0rem;
     }
 
     .main-left-side p:last-child {
